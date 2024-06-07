@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordonnance PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        h1 {
+            color: midnightblue;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: darkblue;
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        .main-hr {
+            border: 5px solid mediumvioletred;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .secondary-hr {
+            border: 1px solid darkgrey;
+            margin: 20px;
+        }
+
+
+        .patient-info {
+            margin-left : 30px;
+            margin-right : 30px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap : wrap;
+        }
+
+        .medecin-info {
+            float: right;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 25%;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>Ordonnance Médicale</h1>
+<hr class="main-hr">
+<div style="margin: 30px">
+    <h2 style="margin: 30px">Informations de Patient</h2>
+    <div class="patient-info">
+        <div class="info-row">
+            <div>
+                <p><strong>Nom:</strong> {{ patientNom }} {{ patientPrenom }}</p>
+            </div>
+            <div>
+                <p><strong>Age:</strong> {{ patientAge }}</p>
+            </div>
+        </div>
+        <div class="info-row">
+            <p><strong>Email:</strong> {{ patientEmail }}</p>
+            <p><strong>Genre:</strong> {{ patientGenre }}</p>
+        </div>
+        <div class="info-row">
+            <p><strong>Téléphone:</strong> {{ patientTel }}</p>
+        </div>
+    </div>
+    <hr class="secondary-hr">
+    <div style="margin-left: 30px">
+        <p><strong>Ordonnance ID:</strong> {{ ordonnance.id }}</p>
+        <p><strong>Ordonnance Description:</strong> {{ ordonnance.description }}</p>
+        <p><strong>Type:</strong> {{ ordonnance.type }}</p>
+        <p><strong>Date de Rendez-vous:</strong> {{ ordonnance.date|date('Y-m-d H:i:s') }}</p>
+    </div>
+
+    <hr class="secondary-hr">
+
+    <div class="medecin-info">
+        <p><strong>Nom de medecin:</strong> {{ medecinNom }}</p>
+        <p><strong>Specialitée:</strong> {{ speciality }}</p>
+        <p><strong>Téléphone:</strong> {{ medecinTel }}</p>
+    </div>
+
+    <br>
+    <br>
+    <p style="position: fixed; bottom: 10px; left: 10px; color: rgb(128,128,128);">Merci de choisir notre Application</p>
+</div>
+</body>
+</html>

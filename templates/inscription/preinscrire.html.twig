@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <title>{% block title %}Trim{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <!-- Favicons -->
+        <link href="{{asset('img/favicon.png')}}" rel="icon">
+        <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@TriM.com</a>
+            <i class="bi bi-phone"></i> +216 70 200 300
+        </div>
+        <div class="d-none d-lg-flex social-links align-items-center">
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <!--<h1 class="logo me-auto"><a href="index.html">TriM</a></h1>-->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="{{ path('app_home') }}" class="logo me-auto"><img src="{{asset('img/logo.png')}}" alt="" class="img-fluid"></a>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto " href="{{path('app_home')}}">Accueil</a></li>
+                <li><a class="nav-link scrollto" href="#about">À propos</a></li>
+                <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Médecin</a></li>
+                        <li><a href="#">Laboratoire</a></li>
+                        <li><a href="#">Pharmacie</a></li>
+                        <li><a href="#">Infirmier</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Prendre un</span> Rendez-vous</a>
+
+    </div>
+</header><!-- End Header -->
+<br>
+<br>
+<br>
+<br>
+<body class="bg-gradient-primary">
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Vous Etes?</h1>
+                        </div>
+                        <form class="user">
+                            <select name="choix" id="choix" class="form-group form-control form-control-user" style="height: calc(4em + 0.75rem + 2px);">
+                                <option value="role">Role</option>
+                                <option value="med">Medecin</option>
+                                <option value="infirmier">Infirmier</option>
+                                <option value="pharmacien">Pharmacien</option>
+                                <option value="chef laboratoire">Chef laboratoire</option>
+                                <option value="patient">Patient</option>
+                            </select>
+                            <button type="button" id="suivantBtn" class="btn btn-primary btn-user btn-block" onclick="redirect()">Suivant</button>
+                            <hr>
+                        </form>
+
+                        <script>
+                            function redirect() {
+                                var selectedValue = document.getElementById("choix").value;
+
+                                switch (selectedValue) {
+                                    case "med":
+                                        window.location.href = "{{ path('add') }}";
+                                        break;
+                                    case "infirmier":
+                                        window.location.href = "{{ path('inf_add') }}";
+                                        break;
+                                    case "pharmacien":
+                                        window.location.href = "{{ path('pharmacien_add') }}";
+                                        break;
+                                    case "patient":
+                                        window.location.href = "{{ path('patient_add') }}";
+                                        break;
+                                    case "chef laboratoire":
+                                        window.location.href = "{{ path('chef_add') }}";
+                                        break;
+                                    case "role":
+                                        break;
+                                }
+                            }
+                        </script>
+
+
+
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% block body %}
+
+
+{% endblock %}
+
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="container d-md-flex py-4">
+        <div class="col-lg-3 col-md-6 footer-links">
+            <h3>TriM</h3>
+            <p>
+                Technopôle El Ghazala<br>
+                BP99 rue Newton<br>
+                Ariana 2088<br><br>
+            </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+            <p>
+                <strong>Téléphone:</strong> +216 70 200 300<br>
+                <strong>Email:</strong> contact@TriM.com<br>
+            </p>
+        </div>
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>TriM</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+                Designed by <a>Gaston</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- End Footer -->
+
+
+{% block javascripts %}
+    <!-- Vendor JS Files -->
+    <script src="{{asset('vendor/purecounter/purecounter_vanilla.js')}}"></script>
+    <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    <!-- Template Main JS File -->
+    <script src="{{asset('js/main.js')}}"></script>
+
+
+    <!-- Core plugin JavaScript-->
+
+    <!-- Custom scripts for all pages-->
+
+    <!--
+
+    TemplateMo 566 Medic Care
+
+    https://templatemo.com/tm-566-medic-care
+
+    -->
+{% endblock %}
+
+</body>

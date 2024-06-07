@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Trim-Profile{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <!-- Favicons -->
+        <link href="{{asset('img/favicon.png')}}" rel="icon">
+        <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+    {% endblock %}
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary2 sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-flask"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Chef Laboratoire</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item ">
+            <a class="nav-link" href="/{{cheflab.id}}">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Accueil</span></a>
+        </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/{{cheflab.id}}">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Profile</span></a>
+        </li>
+
+        <!-- Nav Item - Charts -->
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/labo/{{cheflab.id}}">
+                <i class="fas fa-fw fa-hospital-user"></i>
+                <span>Mon laboratoire</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/static/{{cheflab.id}}">
+                <i class="fas fa-fw fa-line-chart"></i>
+                <span>Mes statistiques</span></a>
+        </li>
+
+        <li class="nav-item  active">
+            <a class="nav-link" href="/cheflab/ord/{{cheflab.id}}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Les demandes de prélèvement</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="/home">
+                <i class="fas fa-fw fa-sign-out"></i>
+                <span>Déconnecter</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" >
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{cheflab.nom}}</span>
+                            <img class="img-profile rounded-circle"
+                                 src="{{asset('img/undraw_profile.svg')}}">
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Tableau des demandes de prélèvement</h1>
+                <br><br>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Etat</th>
+                                    <th>Option</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for ord in ords %}
+                                    <tr>
+                                        <td>{{ ord.id }}</td>
+                                        <td>{{ ord.type }}</td>
+                                        <td>{{ ord.date|date('H:i:s') }}</td>
+                                        <td>{{ ord.etat }}</td>
+                                        <td>
+                                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{ path('edit_ordlab', {'id': ord.id}) }}">
+                                                <i class="fas fa-info-circle fa-sm text-white-50"></i> Détail
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+
+
+            {% block body %}
+
+
+            {% endblock %}
+
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; TriM</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+        <script src="{{asset('js/lab.js')}}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+        <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+        <!-- JavaScript for displaying error message -->
+        <script>
+            // Vérifie si le message d'erreur est présent dans l'URL (c'est-à-dire si le code est incorrect)
+            {% if app.request.query.get('error') %}
+            // Affiche une fenêtre pop-up avec le message d'erreur
+            alert("Le code que vous avez saisi est incorrect. Veuillez vérifier et réessayer.");
+            {% endif %}
+        </script>
+    {% endblock %}
+</body>

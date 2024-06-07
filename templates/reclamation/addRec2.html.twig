@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <title>{% block title %}Trim{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <!-- Favicons -->
+        <link href="{{asset('img/favicon.png')}}" rel="icon">
+        <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@TriM.com</a>
+            <i class="bi bi-phone"></i> +216 70 200 300
+        </div>
+        <div class="d-none d-lg-flex social-links align-items-center">
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <!--<h1 class="logo me-auto"><a href="index.html">TriM</a></h1>-->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="{{ path('app_home') }}" class="logo me-auto"><img src="{{asset('img/logo.png')}}" alt="" class="img-fluid"></a>
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto active" href="{{path('app_home')}}">Accueil</a></li>
+                <li><a class="nav-link scrollto" href="#about">À propos</a></li>
+                <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Médecin</a></li>
+                        <li><a href="#">Laboratoire</a></li>
+                        <li><a href="#">Pharmacie</a></li>
+                        <li><a href="#">Infirmier</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link scrollto " href="#contact">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="/" class="appointment-btn scrollto">Se Déconnecter</a>
+
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <h1>Bienvenue sur TriM</h1>
+        <h2>Santé simplifiée, soins amplifiés</h2>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="content">
+                        <h3>Pourquoi choisir TriM?</h3>
+                        <p>
+                            TriM offre une plateforme conviviale et tout-en-un, vous permettant de gérer facilement vos rendez-vous, votre historique médical et vos interactions avec les professionnels de la santé.
+                            Avec TriM, accédez à des services de qualité tout en préservant l'environnement grâce à notre approche éco-responsable.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="more-btn">En savoir plus <i class="bx bx-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 d-flex align-items-stretch">
+                    <div class="icon-boxes d-flex flex-column justify-content-center">
+                        <div class="row">
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-receipt"></i>
+                                    <h4>Ordonnances Électroniques</h4>
+                                    <p>TriM vous offre des ordonnances électroniques : rapide, pratique et respectueux de l'environnement.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-images"></i>
+                                    <h4>Résultats de Prélèvements</h4>
+                                    <p>Consultez vos résultats de prélèvements médicaux à distance avec TriM. Accédez facilement et en toute sécurité aux informations essentielles concernant votre santé</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4>les Services Médicaux</h4>
+                                    <p>Tous les services médicaux dont vous avez besoin sont réunis sur TriM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End .content-->
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+                    <a href="https://youtu.be/gl6T7w6oyqE" class="glightbox play-btn mb-4"></a>
+                </div>
+
+                <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+                    <h3>Accédez aux Meilleurs Professionnels de Santé</h3>
+                    <p>Les meilleurs professionnels de santé sont sur TriM. Inscrivez-vous dès maintenant pour accéder à une communauté de médecins qualifiés et d'infirmières dévouées, prêts à vous offrir les meilleurs soins médicaux. Avec TriM, votre bien-être est notre priorité.</p>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                        <h4 class="title"><a href="">Sécurité</a></h4>
+                        <p class="description">TriM met en place des protocoles de sécurité avancés pour garantir la confidentialité de vos données médicales.</p>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-list-ul"></i></div>
+                        <h4 class="title"><a href="">Accessibilité</a></h4>
+                        <p class="description">Nous travaillons continuellement pour rendre notre plateforme conviviale et facile à utiliser pour les personnes de tous horizons</p>
+                    </div>
+
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-check-double"></i></div>
+                        <h4 class="title"><a href="">Efficacité</a></h4>
+                        <p class="description">Nous nous efforçons de fournir des services médicaux efficaces et pratiques pour répondre aux besoins de nos utilisateurs.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                        <i class="fas fa-user-md"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Médecin</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                    <div class="count-box">
+                        <i class="far fa-hospital"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Infirmerie</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-flask"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Laboratoire</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="fas fa-award"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Avis</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Services</h2>
+                <p>découvrez une gamme complète de professionnels de la santé prêts à vous aider. Que vous ayez besoin d'une consultation médicale avec un médecin, des analyses de laboratoire, des soins infirmiers ou des conseils en pharmacie, vous trouverez tout ce dont vous avez besoin pour prendre soin de votre santé.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4><a href="">Médecin</a></h4>
+                        <p>Nos médecins expérimentés offrent des consultations en ligne pour des conseils médicaux personnalisés et des suivis de santé pratiques.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-pills"></i></div>
+                        <h4><a href="">Pharmacie</a></h4>
+                        <p>Notre pharmacie en ligne propose une large sélection de médicaments de qualité, avec une livraison rapide et fiable.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                        <h4><a href="">Infirmier</a></h4>
+                        <p>Nos infirmiers qualifiés offrent des soins infirmiers personnalisés à domicile, y compris des injections, des pansements et des conseils de santé.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                    <div class="icon-box">
+                        <div class="icon"><i class="fas fa-eye-dropper"></i></div>
+                        <h4><a href="">Laboratoire</a></h4>
+                        <p>Notre laboratoire médical propose une gamme complète de tests et d'analyses, équipé des dernières technologies.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    {#-<!-- ======= Appointment Section ======= -->
+    <section id="appointment" class="appointment section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Prendre un rendez-vous</h2>
+                <p>Prendre rendez-vous n'a jamais été aussi simple. Notre plateforme conviviale vous permet de planifier vos consultations médicales en quelques clics, où que vous soyez. Fini les longues attentes au téléphone ou les déplacements inutiles.</p>
+            </div>
+
+            <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Numéro de téléphone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Date du rendez-vous" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <select name="department" id="department" class="form-select">
+                            <option value="">Sélectionner le département</option>
+                            <option value="Department 1">Department 1</option>
+                            <option value="Department 2">Department 2</option>
+                            <option value="Department 3">Department 3</option>
+                        </select>
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <select name="doctor" id="doctor" class="form-select">
+                            <option value="">Sélectionner le médecin</option>
+                            <option value="Doctor 1">Doctor 1</option>
+                            <option value="Doctor 2">Doctor 2</option>
+                            <option value="Doctor 3">Doctor 3</option>
+                        </select>
+                        <div class="validate"></div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message (facultatif)"></textarea>
+                    <div class="validate"></div>
+                </div>
+                <div class="mb-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Prendre un rendez-vous</button></div>
+            </form>
+
+        </div>
+    </section><!-- End Appointment Section -->
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Departments</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hepatology</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatrics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Eye Care</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Cardiology</h3>
+                                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{{asset('img/departments-1.jpg')}}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Et blanditiis nemo veritatis excepturi</h3>
+                                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                                    <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{{asset('img/departments-2.jpg')}}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
+                                    <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
+                                    <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{{asset('img/departments-3.jpg')}}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
+                                    <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
+                                    <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{{asset('img/departments-4.jpg')}}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-5">
+                            <div class="row gy-4">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
+                                    <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+                                    <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="{{asset('img/departments-5.jpg')}}" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Departments Section -->-#}
+
+    <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Médecin</h2>
+                <p>Découvrez les médecins les plus populaires sur TriM, choisis par notre communauté pour leur expertise et leur qualité de soins. Avec des évaluations et des commentaires authentiques de patients, vous pouvez prendre des décisions éclairées sur votre santé.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="{{asset('img/doctors/doctors-1.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>Sliman Labyedh</h4>
+                            <span>Psychothérapeute</span>
+                            <p>Nous sommes là pour vous accompagner vers une vie équilibrée.</p>
+                            <div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="{{asset('img/doctors/doctors-2.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>Janat Arafa</h4>
+                            <span>Anesthesiologist</span>
+                            <p>Nous sommes là pour vous accompagner vers une vie équilibrée.</p>
+                            <div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="{{asset('img/doctors/doctors-3.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>Sboii Labyedh</h4>
+                            <span>Cardiologie</span>
+                            <p>Nous sommes là pour vous accompagner vers une vie équilibrée.</p>
+                            <div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-4">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic"><img src="{{asset('img/doctors/doctors-4.jpg')}}" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>Azza Slimani</h4>
+                            <span>Neurochirurgien</span>
+                            <p>Nous sommes là pour vous accompagner vers une vie équilibrée.</p>
+                            <div class="social">
+                                <a href=""><i class="ri-twitter-fill"></i></a>
+                                <a href=""><i class="ri-facebook-fill"></i></a>
+                                <a href=""><i class="ri-instagram-fill"></i></a>
+                                <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Doctors Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Questions fréquemment posées</h2>
+                <p>Découvrez nos réponses aux questions les plus courantes dans notre section FAQ. Trouvez des informations utiles sur les fonctionnalités de TriM, les services médicaux disponibles, la confidentialité des données et bien plus encore.</p>
+            </div>
+
+            <div class="faq-list">
+                <ul>
+                    <li data-aos="fade-up">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Question : Quels services proposez-vous ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                            <p>
+                                Réponse : Nous offrons une gamme complète de services médicaux, y compris la consultation en ligne, la prise de rendez-vous, la gestion des dossiers médicaux, et bien plus encore.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Question : Comment puis-je être sûr de choisir le bon médecin pour mes besoins ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Réponse : Notre plateforme vous offre la possibilité de consulter les profils des médecins, y compris leurs qualifications, leurs spécialités et les avis des patients précédents, vous permettant ainsi de prendre une décision éclairée.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Question : Comment puis-je laisser un avis sur mon expérience avec un médecin ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Réponse : Après chaque consultation, vous aurez l'occasion de laisser un avis sur votre expérience avec le médecin, ce qui nous permettra d'améliorer continuellement nos services et de garantir une expérience positive pour tous nos utilisateurs.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Question : Comment puis-je annuler ou modifier un rendez-vous ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Réponse : Vous pouvez facilement annuler ou modifier un rendez-vous en ligne en accédant à votre compte utilisateur et en suivant les étapes simples fournies sur notre plateforme.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="400">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Question : Est-ce que mes informations sont sécurisées ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                Réponse : Oui, la sécurité de vos informations est notre priorité absolue. Nous utilisons les dernières technologies de cryptage pour protéger vos données médicales et assurer leur confidentialité.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{{asset('img/testimonials/testimonials-1.jpg')}}" class="testimonial-img" alt="">
+                                <h3> Wided Ben Aissi</h3>
+                                <h4>PDG et fondateur</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Chez TriM, notre vision est simple : rendre les soins de santé accessibles à tous En tant que PDG et fondateur, je suis fier de notre engagement à fournir une plateforme innovante qui facilite la vie de nos utilisateurs.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{{asset('img/testimonials/testimonials-2.jpg')}}" class="testimonial-img" alt="">
+                                <h3>Wided Ben Aissi</h3>
+                                <h4>Designer</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Mon objectif est de créer des expériences utilisateur fluides et intuitives qui simplifient la vie de nos utilisateurs. Chaque pixel que je dessine est pensé pour offrir une expérience agréable et efficace.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{{asset('img/testimonials/testimonials-3.jpg')}}" class="testimonial-img" alt="">
+                                <h3>Kenza Amiria</h3>
+                                <h4>Propriétaire du magasin</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Notre équipe travaille sans relâche pour garantir que chaque visite sur notre plateforme soit satisfaisante et bénéfique pour nos utilisateurs.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{{asset('img/testimonials/testimonials-4.jpg')}}" class="testimonial-img" alt="">
+                                <h3>Amine Youssfi</h3>
+                                <h4>Travailleur indépendant</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Consultation efficace, médecin compétent, recommandé pour tous.
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-wrap">
+                            <div class="testimonial-item">
+                                <img src="{{asset('img/testimonials/testimonials-5.jpg')}}" class="testimonial-img" alt="">
+                                <h3>Ghaith ElBanna</h3>
+                                <h4>Entrepreneur</h4>
+                                <p>
+                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                    Site médical pratique : navigation simple, prise de rendez-vous rapide, et informations détaillées. Recommandé !
+                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                </p>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+
+    {#-   <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row g-0">
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-1.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-1.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-2.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-2.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-3.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-3.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-4.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-4.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-5.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-5.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-6.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-6.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-7.jp')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-7.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{asset('img/gallery/gallery-8.jpg')}}" class="galelry-lightbox">
+                            <img src="{{asset('img/gallery/gallery-8.jpg')}}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+    -#}
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Nous vous offrons la possibilité de nous faire part de vos commentaires, questions ou préoccupations. Que ce soit pour obtenir de l'aide avec votre compte, signaler un problème technique ou partager vos suggestions d'amélioration, nous sommes là pour vous aider.</p>
+            </div>
+        </div>
+
+        <div>
+            <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.820780520252!2d10.1868701!3d36.8992352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2cb745e5c6f1b%3A0xf69a51ee3c65c12e!2sESB%20%3A%20Esprit%20School%20of%20Business!5e0!3m2!1sen!2stn!4v1647681191346!5m2!1sen!2stn" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Emplacement:</h4>
+                            <p>Technopôle El Ghazala - 1, BP99 rue Newton, Ariana 2088</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>contact@TriM.com</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Appeler:</h4>
+                            <p>+216 70 200 300</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <h4>Reclamation</h4>
+                    {{ form_start(form, {'attr': {'class':'user', 'id': 'reclamation_form'}}) }}
+                    <div class="form-group row">
+                        <div class="col-md-6 form-group">
+                            <br>
+                            {{ form_widget(form.status, {'attr': {'class': 'form-control form-control-user', 'placeholder': 'Objet'}}) }}
+                            <div class="text-danger">
+                                {{ form_errors(form.status) }}
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group row">
+                        <div class="col-md-12 form-group">
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control form-control-user', 'placeholder': 'Description'}}) }}
+                        </div>
+                        <div class="text-danger">
+                            {{ form_errors(form.description) }}
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-user btn-block" >Enregistrer</button>
+
+                    {{ form_end(form) }}
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!--reclamation------------------------------------------------->
+        </div>
+
+
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+
+{% block body %}
+
+
+{% endblock %}
+
+
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="container d-md-flex py-4">
+        <div class="col-lg-3 col-md-6 footer-links">
+            <h3>TriM</h3>
+            <p>
+                Technopôle El Ghazala<br>
+                BP99 rue Newton<br>
+                Ariana 2088<br><br>
+            </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+            <p>
+                <strong>Téléphone:</strong> +216 70 200 300<br>
+                <strong>Email:</strong> contact@TriM.com<br>
+            </p>
+        </div>
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>TriM</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+                Designed by <a>Gaston</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- End Footer -->
+
+
+{% block javascripts %}
+    <!-- Vendor JS Files -->
+    <script src="{{asset('vendor/purecounter/purecounter_vanilla.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/php-email-form/validate.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{asset('js/main.js')}}"></script>
+    <!--
+
+    TemplateMo 566 Medic Care
+
+    https://templatemo.com/tm-566-medic-care
+
+    -->
+{% endblock %}
+
+</body>

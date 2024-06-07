@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Trim-Profile{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <!-- Favicons -->
+        <link href="{{asset('img/favicon.png')}}" rel="icon">
+        <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+        <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
+    {% endblock %}
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary2 sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-flask"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Chef Laboratoire</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item ">
+            <a class="nav-link" href="/{{cheflab.id}}">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Accueil</span></a>
+        </li>
+        <!-- Nav Item - Dashboard -->
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/{{cheflab.id}}">
+                <i class="fas fa-fw fa-home"></i>
+                <span>Profile</span></a>
+        </li>
+
+        <!-- Nav Item - Charts -->
+
+
+        <li class="nav-item  active">
+            <a class="nav-link" href="/cheflab/labo/{{cheflab.id}}">
+                <i class="fas fa-fw fa-hospital-user"></i>
+                <span>Mon laboratoire</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/static/{{cheflab.id}}">
+                <i class="fas fa-fw fa-line-chart"></i>
+                <span>Mes statistiques</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/cheflab/ord/{{cheflab.id}}">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Les demandes de prélèvement</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="/home">
+                <i class="fas fa-fw fa-sign-out"></i>
+                <span>Déconnecter</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" >
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{cheflab.nom}}</span>
+                            <img class="img-profile rounded-circle"
+                                 src="{{asset('img/undraw_profile.svg')}}">
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Mon laboratoire</h1>
+                <!-- Modal -->
+                <div class="modal fade" id="labModal" tabindex="-1" aria-labelledby="labModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                                <h5 class="modal-title" id="labModalLabel">Erreur</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>Vous ne pouvez pas ajouter un laboratoire car vous en possédez déjà un.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-dismiss="modal">Fermer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- template.twig -->
+                <a id="add-lab-button" href="{{ path('add_lab', {'id': 1}) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-has-lab="{{ hasLab ? 'true' : 'false' }}">
+                    <i class="fas fa-add fa-sm text-white-50"></i>Ajouter un laboratoire
+                </a>
+                <br><br>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        {% if Labs is empty %}
+                        <div class="alert alert-warning" role="alert">
+                            Vous n'avez pas de laboratoire. Vous pouvez en créer un <a href="{{ path('add_lab', {'id': 1}) }}">ici</a>.
+                        </div>
+                        {% else %}
+                        {% for Lab in Labs %}
+                            <h3 class="h5 mb-2 text-gray-800">Nom: {{ Lab.nom }}</h3>
+                            <h1 class="h5 mb-2 text-gray-800">Adresse: {{ Lab.adresse }}</h1>
+                            <h1 class="h5 mb-2 text-gray-800">Numéro de téléphone: {{ Lab.ntel }}</h1>
+                            <h1 class="h5 mb-2 text-gray-800">Heures d'ouverture: {{ Lab.hdebut|date('H:i:s') }}</h1>
+                            <h1 class="h5 mb-2 text-gray-800">Heure de fermeture: {{ Lab.hfin|date('H:i:s') }}</h1>
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{ path('edit_lab', {'id': Lab.id}) }}"><i
+                                        class="fas fa-pencil fa-sm text-white-50"></i>Modifier</a>
+                            <!-- Modèle de la modale de confirmation de suppression -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h5 class="modal-title" id="labModalLabel">Confirmation de suppression</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p> Êtes-vous sûr de vouloir supprimer ce laboratoire ?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        <a href="{{ path('delete_lab', {'id': Lab.id}) }}" id="confirmDeleteButton" class="btn btn-danger">Supprimer</a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- Fin Modèle de la modale de confirmation de suppression -->
+                            <a id="delete-lab-button" class="d-none d-sm-inline-block btn btn-sm btn-primary2 shadow-sm delete-lab-button" >
+                                <i class="fas fa-trash fa-sm text-white-50"></i>Supprimer
+                            </a>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                {% for Lab in Labs %}
+                <h1 class="h3 mb-2 text-gray-800">Tableau des Analyses Médicales</h1>
+                <a href="{{ path('add_analyse', {'id': Lab.id}) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-add fa-sm text-white-50"></i>Ajouter un analyse</a>
+                {% endfor %}
+                <br><br>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Type</th>
+                                    <th>Outillage</th>
+                                    <th>Conseils</th>
+                                    <th>Option</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for analyse in analyses %}
+                                    <!-- Modèle de la modale de confirmation de suppression pour l'analyse -->
+                                    <div class="modal fade" id="deleteAnalyseModal" tabindex="-1" aria-labelledby="deleteAnalyseModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger text-white">
+                                                    <h5 class="modal-title" id="deleteAnalyseModalLabel">Confirmation de suppression</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p> Êtes-vous sûr de vouloir supprimer cette analyse ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <a href="{{ path('delete_analyse', {'id': analyse.id}) }}" id="confirmDeleteAnalyseButton" class="btn btn-danger">Supprimer</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fin Modèle de la modale de confirmation de suppression pour l'analyse -->
+                                <tr>
+                                    <td>{{ analyse.nom }}</td>
+                                    <td>{{ analyse.type }}</td>
+                                    <td>{{ analyse.outillage }}</td>
+                                    <td>{{ analyse.conseils }}</td>
+                                    <td><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{ path('edit_analyse', {'id': analyse.id}) }}"><i
+                                                    class="fas fa-pencil fa-sm text-white-50"></i>Modifier</a>
+                                        <a id="delete-analyse-button" class="d-none d-sm-inline-block btn btn-sm btn-primary2 shadow-sm delete-analyse-button">
+                                            <i class="fas fa-trash fa-sm text-white-50"></i>Supprimer</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- End of Main Content -->
+
+
+        {% block body %}
+
+
+        {% endblock %}
+
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; TriM</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('js/lab.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('js/demo/datatables-demo.js')}}"></script>
+{% endblock %}
+</body>
